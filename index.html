@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brake Services Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Brake Services Request</h1>
+        <form id="serviceForm">
+            <!-- Step 1: Contact Information -->
+            <fieldset>
+                <legend>Step 1: Contact Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your contact number" required>
+                
+                <label for="email">Email (optional):</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address">
+                
+                <label for="contactMethod">Preferred Contact Method:</label>
+                <select id="contactMethod" name="contactMethod">
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="text">Text Message</option>
+                </select>
+            </fieldset>
+
+            <!-- Step 2: Vehicle Details -->
+            <fieldset>
+                <legend>Step 2: Vehicle Details</legend>
+                <label for="carDetails">Car Make and Model:</label>
+                <input type="text" id="carDetails" name="carDetails" placeholder="Honda CR-V" required>
+                
+                <label for="year">Year of Manufacture:</label>
+                <select id="year" name="year">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <!-- Add more years as needed -->
+                </select>
+                
+                <label for="fuelType">Fuel Type:</label>
+                <select id="fuelType" name="fuelType">
+                    <option value="gasoline">Gasoline</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="electric">Electric/Hybrid</option>
+                </select>
+                
+                <label for="mileage">Mileage:</label>
+                <input type="text" id="mileage" name="mileage" placeholder="Enter your car's mileage (e.g., 45,000 miles)">
+            </fieldset>
+
+            <!-- Step 3: Service Requirements -->
+            <fieldset>
+                <legend>Step 3: Service Requirements</legend>
+                <label for="serviceType">Type of Brake Service Needed:</label>
+                <select id="serviceType" name="serviceType" onchange="updateEstimate()">
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="brakePadReplacement">Brake Pad Replacement</option>
+                    <option value="rotorReplacement">Rotor Replacement/Resurfacing</option>
+                    <option value="brakeFluidFlush">Brake Fluid Flush</option>
+                    <option value="caliperRepair">Caliper Repair/Replacement</option>
+                    <option value="drumBrakeRepair">Drum Brake Repair</option>
+                    <option value="absSystemRepair">ABS System Diagnosis/Repair</option>
+                    <option value="other">Other</option>
+                </select>
+                
+                <label for="issueDescription">Describe the Issue:</label>
+                <textarea id="issueDescription" name="issueDescription" placeholder="E.g., 'Squealing noise while braking'"></textarea>
+                
+                <label>Additional Services:</label>
+                <div>
+                    <input type="checkbox" id="brakeInspection" name="additionalServices" value="brakeInspection" onchange="updateEstimate()"> 
+                    <label for="brakeInspection">Brake Inspection</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="tireRotation" name="additionalServices" value="tireRotation" onchange="updateEstimate()"> 
+                    <label for="tireRotation">Tire Rotation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="wheelAlignment" name="additionalServices" value="wheelAlignment" onchange="updateEstimate()"> 
+                    <label for="wheelAlignment">Wheel Alignment</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="suspensionCheck" name="additionalServices" value="suspensionCheck" onchange="updateEstimate()"> 
+                    <label for="suspensionCheck">Suspension Check</label>
+                </div>
+            </fieldset>
+
+            <!-- Step 4: Special Notes -->
+            <fieldset>
+                <legend>Step 4: Special Notes (Optional)</legend>
+                <label for="specialNotes">Additional Details or Specific Requests:</label>
+                <textarea id="specialNotes" name="specialNotes" placeholder="E.g., 'Brakes feel spongy'"></textarea>
+            </fieldset>
+
+            <!-- Dynamic Estimate -->
+            <fieldset>
+                <legend>Estimated Total</legend>
+                <p id="totalEstimate">$0.00</p>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
